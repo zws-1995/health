@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+           version="3.0">
+
+    <display-name>Archetype Created Web Application</display-name>
+    <!-- 加载spring容器 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <!--
+          classpath: 查找当前工程class路径下的文件。
+          classpath*:不仅会查找当前工程class路径下的文件，还会查找当前工程依赖的jar的class路径下的文件。
+
+          由于health_service，需要加载health_dao的applicationContext-dao.xml配置文件，完成数据访问层的配置，而
+          health_service、health_dao打包后不在同一个jar中，因此，这里需要使用classpath*。
+        -->
+        <param-value>classpath*:applicationContext*.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
+</web-app>
